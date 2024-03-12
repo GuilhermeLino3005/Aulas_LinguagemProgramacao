@@ -22,7 +22,7 @@ float media(float v1[], int tam){
      return soma / tam;
 }
 
-void imprimir_vetor(int v[], int tam){
+void imprimir_vetor(float v[], int tam){
      
      for(int i = 0; i < tam; i++){
           cout << v[i] << " " << endl;
