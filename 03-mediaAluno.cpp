@@ -6,7 +6,7 @@ using namespace std;
 int main(){
      //Variavéis do sistema local
      float n1, n2, n3, media;
-
+     int Media;
      string nome;
 
      cout << "--- SISTEMA ALUNO ---" << endl;
@@ -23,9 +23,9 @@ int main(){
      cout << "Digite a nota 3 do aluno "+nome+" :"  << endl;
      cin >> n3;
 
-     media = (n1+ n2+ n3)/3;
+     Media = (n1+ n2+ n3)/3;
 
-     cout <<"A media de aluno e: "<< media << endl;
+     cout <<"A media de aluno e: "<< Media << endl;
 
 
 
