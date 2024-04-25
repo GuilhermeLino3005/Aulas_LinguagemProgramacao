@@ -37,6 +37,48 @@ void imprimir(Nopessoa *l){
      
 }
 
+void inserir_fim(Nopessoa *&l, int info){
+     Nopessoa *novo = new Nopessoa;
+     novo -> nome = info;
+     novo -> prox = NULL;
+     if (l == NULL){
+          l = novo; 
+     }
+     else{
+          Nopessoa * p = l;
+          while (p -> prox != NULL){
+               p = p -> prox;
+          }
+          p -> prox = novo;
+          
+     }
+     
+}
+
+int tamanho(Nopessoa *l){
+     int cont = 0;
+     Nopessoa *p = l ;
+     while (p != NULL){
+          cont++;
+          p = p -> prox;
+     }
+     return cont;
+     
+}
+
+bool romever_inicio(Nopessoa * &l){
+     if(l == NULL){
+          return false;
+     }
+     else{
+          Nopessoa *p = l;
+          l = l -> prox;
+          delete p;
+          return true;
+     }
+}
+
+
 int main(){
      Nopessoa* homem = criar_lista();
      Nopessoa* mulher = criar_lista();
@@ -69,9 +111,5 @@ int main(){
      
      cout<<"Lista de mulheres"<<endl;
      imprimir(mulher);
-     
-
-     
-     
-     
+        
 }
