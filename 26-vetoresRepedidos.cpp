@@ -2,48 +2,55 @@
 
 using namespace std;
 
-void ler_vetor(int v[], int tam){
-     for (int i = 0; i < tam; i++){
-          cout<<"Digite um valor: ";
-          cin>>v[i];
+int contar_repetidos(int *vet, int tam){
+     int cont = 0;
+     for(int i = 0; i < tam - 1; i++){
+          int j = i - 1;
+          while (j >= 0 && vet[i] != vet[j]){
+               j--;
+          }
+          if(j == -1){
+               j = i + 1;
+               while (j < tam && vet[i] != vet[j]){
+                    j++;
+               }
+               if(j != tam){
+                    cont++;   
+               }
+               
+          }
+          
      }
 
+     return cont;
 }
 
-void repedidos(int v1[], int v2[], int res[], int tam){
-     int ax = 0;
-     for(int i = 0; i < tam; i++){
-          if (v1[i] == v2[i]){     
-               res[ax] = v2[i];
-               ax++;
+int * encontrar_repetidos(int *vet, int tam, int &tr){
+     tr = contar_repetidos(vet, tam);
+     int *rep = new int[tr];
+     int tr = 0;
+     for(int i = 0; i < tam - 1; i++){
+          int j = i - 1;
+          while(j >= 0 && vet[i] != vet[j]){
+               j--;
+          }
+          while (j < tam && vet[i] != vet[j]){
+               j++;
+          }
+
+          if(j != tam){
+               rep[tr] = vet[i];
+               tr++;
           }
      }
-
+     return rep;
 }
-
-
-
-void imprimir(int v[], int tam){
-     cout<<"{ ";
-     for (int i = 0; i < tam; i++){
-          cout<<v[i] << " ";
-     }
-     cout<<" }"<<endl;
-}
-
 
 int main(){
-     const int tam = 10;
-     int v1[tam], v2[tam], res[tam];
+     int vetor[8] = {10, 20, 10, 30, 40, 10, 10, 40};
+     int tam = 8;
+     int c = contar_repetidos(vetor, tam);
 
-     cout<<"Preenchendo o primeiro vetor"<<endl;
-     ler_vetor(v1, tam);
-
-     cout<<"Preenchendo o segundo vetor"<<endl;
-     ler_vetor(v2, tam);
-
-     repedidos(v1, v2, res, tam);
-
-     imprimir(res, tam);
+     cout<< c <<endl;  
 
 }
